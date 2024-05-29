@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-tasking and Processing</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+ body, html {
+	 margin: 0;
+	 padding: 0;
+	 font-family: 'Montserrat', sans-serif;
+   background-color: #191919;
+}
+h1,p{
+  color: #ffffff;
+}
+
+ .hero-nav {
+	 position: fixed;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 height: 300px;
+	 min-height: 105px;
+	 background-image: url(https://images.unsplash.com/photo-1676298325103-856e085161ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);
+	 background-size: cover;
+	 background-position: center;
+	 overflow: hidden;
+}
+ .hero-nav .hero-nav__inner {
+	 z-index: 1;
+}
+ .hero-nav h1 {
+	 color: #ffffff;
+	 font-size: 5vw;
+}
+ .hero-nav:before {
+	 content: "";
+	 background: rgba(0, 0, 0, 0);
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 transition: background 400ms;
+}
+ .hero-nav.fixme:before {
+	 background: rgba(0, 0, 0, 0.8);
+}
+ .page-content {
+	 width: 800px;
+	 margin: 0 auto;
+	 line-height: 1.625;
+}
+  </style>
+</head>
+<body>
+  <div class="hero-nav">
+    <div class="hero-nav__inner">
+        <h1>Multi-tasking and Processing</h1>
+        <div class="hero-nav__button">
+            <a href="#" class="btn"></a>
+        </div>
+    </div>
+</div>
+<div class="page-content">
+  <h1>Types of Operating System</h1>
+    <p>Different types of operating systems prioritize specific functions and enable efficient operations based on the task or environment they are used in. Some common types include real-time operating systems (RTOS) for time-sensitive tasks, single-user/single-tasking and multi-tasking operating systems for personal computers, multi-user operating systems for shared systems, network operating systems for managing network resources, and embedded operating systems for specific devices. The choice of operating system depends on the specific requirements and priorities of the application.</p>
+  <h1>Distributed</h1>
+    <p>Network connections can be used to connect separate computers and form a more powerful system. This process, known as distributed computing, involves splitting data and instructions across multiple computers (nodes) in the system.</br></br>
+      A distributed operating system manages the communication between these nodes, effectively integrating them into a cohesive unit. This coordination allows the distributed system to utilize the combined computational power of multiple processors, which is particularly beneficial for processor-intensive tasks that require significant computing resources.</br></br>
+      Distributed systems are advantageous when a single processor is insufficient to handle the workload and increased computational power is needed. By distributing tasks across multiple nodes, these systems enable more efficient and scalable processing capabilities.</p>
+  <h1>Embedded</h1>
+    <p>
+      Embedded operating systems are specialized for computers with specific purposes, such as mobile phones and washing machines. They prioritize reliability and efficient resource utilization over system flexibility.</br></br>
+      • Tailored Functionality: Embedded operating systems are customized to meet specific application requirements, providing only necessary features and services.</br></br>
+      • Resource Efficiency: They optimize resource usage, including memory, processing power, and energy, to suit the limited resources available in embedded devices.</br></br>
+      • Deterministic Behavior: Embedded operating systems offer predictable and consistent responses and execution times, crucial for real-time and time-sensitive applications.</br></br>
+      • Reliability and Stability: They prioritize stability to ensure uninterrupted operation, as embedded systems often perform critical tasks.</br>
+  <h1>Multitasking</h1>
+    <p>A multitasking operating system allows users to run multiple applications concurrently on their personal computers. Although a single-core computer can only execute one application at a time, the operating system utilizes techniques like time-sharing and context switching to quickly switch between tasks. This gives the illusion of running multiple tasks simultaneously, providing users with a seamless multitasking experience.</p>
+  <h1>Managing Secondary Storage</h1>
+    <p>A multi-user operating system provides the facilities for multiple users to access the same system. It controls the consumption of resources so that users can access the same system at the same time, without adversely affecting the other users.</p>
+  <h1>Real Time</h1>
+    <p>
+    Real-time operating systems are designed to support applications that require processing data and generating specific outputs with minimal delay. These operating systems prioritize quick and predictable response times over flexibility, as they must consistently meet specific timing constraints.</br></br>
+    Real-time operating systems are crucial in applications where immediate and precise responses are critical to prevent injury or loss of life. Examples include self-driving cars, where split-second decisions and actions are required to ensure safe navigation, and plane autopilot systems, where real-time responsiveness is necessary for maintaining flight stability and safety.</br></br>
+    These operating systems employ various techniques to minimize response times, such as prioritizing time-critical tasks, utilizing efficient scheduling algorithms, and optimizing resource allocation. By guaranteeing timely execution of critical operations, real-time operating systems enable applications to meet stringent timing requirements and operate reliably in time-sensitive environments.</p>
+</div>
+<script>
+  var heroShinker = function() {
+    var hero = $('.hero-nav'),
+        heroHeight = $('.hero-nav').outerHeight(true);
+        $(hero).parent().css('padding-top', heroHeight);
+    $(window).scroll(function() {
+        var scrollOffset = $(window).scrollTop();
+        if (scrollOffset < heroHeight) {
+            $(hero).css('height', (heroHeight - scrollOffset));
+        }
+        if (scrollOffset > (heroHeight - 215)) {
+            hero.addClass('fixme');
+        } else {
+            hero.removeClass('fixme');
+        };
+    });
+}
+heroShinker();
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scheduling</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+ body, html {
+	 margin: 0;
+	 padding: 0;
+	 font-family: 'Montserrat', sans-serif;
+   background-color: #191919;
+}
+h1,p{
+  color: #ffffff;
+}
+
+ .hero-nav {
+	 position: fixed;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 height: 300px;
+	 min-height: 105px;
+	 background-image: url(https://images.pexels.com/photos/4392541/pexels-photo-4392541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+	 background-size: cover;
+	 background-position: center;
+	 overflow: hidden;
+}
+ .hero-nav .hero-nav__inner {
+	 z-index: 1;
+}
+ .hero-nav h1 {
+	 color: #ffffff;
+	 font-size: 5vw;
+}
+ .hero-nav:before {
+	 content: "";
+	 background: rgba(0, 0, 0, 0);
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 transition: background 400ms;
+}
+ .hero-nav.fixme:before {
+	 background: rgba(0, 0, 0, 0.8);
+}
+ .page-content {
+	 width: 800px;
+	 margin: 0 auto;
+	 line-height: 1.625;
+}
+  </style>
+</head>
+<body>
+  <div class="hero-nav">
+    <div class="hero-nav__inner">
+        <h1>Scheduling: Fuctions and Benefits</h1>
+        <div class="hero-nav__button">
+            <a href="#" class="btn"></a>
+        </div>
+    </div>
+</div>
+<div class="page-content">
+  <h1>Scheduling algorithms</h1>
+    <p>To facilitate task switching on a computer, the operating system takes control of suspending the currently running process and managing the transition to another process. Rather than halting the process entirely, it is temporarily suspended and saved in memory. When the processor is ready to resume executing the suspended process, its previous state is reloaded, and the process continues running seamlessly.</br></br>
+      This process of suspending and resuming tasks occurs repeatedly for various processes managed by the operating system. The scheduling algorithm implemented by the operating system determines the order in which processes are executed, ensuring fair and efficient utilization of system resources. The scheduling algorithm considers factors like process priorities, resource availability, and the desired order of execution to make informed decisions about task scheduling.</br></br>
+      By managing the suspension, resumption, and scheduling of processes, the operating system enables efficient multitasking and ensures that tasks are executed in a controlled and organized manner.</p>
+  <h1>Round Robin</h1>
+    <p>In round-robin scheduling, the processor's time is divided equally among all active tasks. Each task is allocated a time slice, and if a task does not complete within its time slice, it is paused, and the computer switches to the next task in line. The paused task can only resume execution when it is scheduled for processor time again.</br></br>
+      This scheduling algorithm can be likened to sharing sweets with friends, where each person receives one sweet in turn until everyone has their desired amount.</br></br>
+      Round-robin scheduling ensures fair allocation of processor time to all tasks, preventing any task from experiencing prolonged waiting. However, as the number of processes increases, the time slice assigned to each process decreases, potentially impacting the completion time of urgent tasks. This scalability limitation is due to the decreasing time available for each process to execute, making it less likely for time-critical tasks to be quickly completed.</br></br>
+      <img src="https://isaaccomputerscience.org/api/v3.5.0/api/images/content/computer_science/computer_systems/operating_systems/figures/isaac_cs_sys_os_processor_time_round_robin.svg" height="300" width="500">
+  <h1>First Come, First Served</h1>
+    <p>In first-come, first-served scheduling, processes are executed in the order they arrive, similar to how customers are served at a supermarket checkout. This algorithm operates on a simple principle: the process that arrives first is the first to be executed.</br></br>
+      One advantage of this algorithm is its simplicity in implementation. Additionally, once a process starts running, it is guaranteed to complete its execution. This avoids the issue of starvation, where a process is continuously denied processor time and cannot finish its execution.</br></br>
+      However, a drawback of first-come, first-served scheduling is that it can lead to long waiting times for processes. If a lengthy process arrives early, all subsequent processes must wait until it completes, causing potential delays. Therefore, this algorithm is more suitable for systems with a small number of concurrent processes where waiting times can be managed effectively.</br></br>
+      <img src="https://isaaccomputerscience.org/api/v3.5.0/api/images/content/computer_science/computer_systems/operating_systems/figures/isaac_cs_sys_os_processor_time_first_come.svg" height="300" width="500">
+  <h1>Shortest Job First</h1>
+   <p>In shortest job first (SJF) scheduling, processes are prioritized based on their total execution time, and the process with the shortest execution time is given precedence. This can be compared to a supermarket queue where the person with the fewest items in their basket is allowed to pay first.</br></br>
+    SJF scheduling aims to minimize waiting times by quickly completing shorter processes, allowing the processor to allocate more time to longer jobs. This approach can be effective in reducing overall turnaround time and maximizing system efficiency.</br></br>
+  <h1>Shortest Time Remaining</h1>
+    <p>
+      In shortest time remaining (STR) scheduling, processes are ordered based on their remaining time to completion, giving priority to the process with the shortest remaining time. Unlike shortest job first (SJF) scheduling, which considers the total job length, STR scheduling focuses on the remaining time needed for a process to finish.</br></br>
+      The key difference between STR and SJF is that STR takes into account the progress made by a process. Even if a long process is mostly complete and has a very short time remaining, it will still be prioritized over other processes with longer remaining times.</p>
+  <h1>Multi-level Feedback Queue</h1>
+      <p>The multi-level feedback queue algorithm is based on the concept of organizing tasks into different queues with varying priorities. The algorithm operates as follows:</br></br>
+
+        1. Initially, processes are assigned to a specific queue with a certain priority level.</br></br>
+        2. Processes that consume excessive CPU time are demoted to a lower priority queue, while processes that have been idle for an extended period are promoted to a higher priority queue. This mechanism helps prevent starvation, ensuring fairness in task execution.</br></br>
+        3. Tasks that heavily rely on input/output (I/O) operations, which typically require more processing time, are placed in higher priority queues. On the other hand, tasks that can be quickly completed are given priority.</br></br>
+        4. The algorithm ensures that all tasks receive processor time, but it prioritizes more important jobs by servicing them earlier.</br></br>
+        5. As tasks are processed, the queues gradually become balanced, ensuring that no single high-priority task monopolizes the processor's time.</br></br>
+
+        The multi-level feedback queue algorithm provides a balanced approach by adjusting priorities based on CPU usage and task characteristics. This allows for efficient utilization of the processor's resources while maintaining fairness among different types of tasks.</p>
+        <img src="https://isaaccomputerscience.org/api/v3.5.0/api/images/content/computer_science/computer_systems/operating_systems/figures/isaac_cs_sys_os_processor_time_multi_level.svg" height="300" width="500">
+</div>
+<script>
+  var heroShinker = function() {
+    var hero = $('.hero-nav'),
+        heroHeight = $('.hero-nav').outerHeight(true);
+        $(hero).parent().css('padding-top', heroHeight);
+    $(window).scroll(function() {
+        var scrollOffset = $(window).scrollTop();
+        if (scrollOffset < heroHeight) {
+            $(hero).css('height', (heroHeight - scrollOffset));
+        }
+        if (scrollOffset > (heroHeight - 215)) {
+            hero.addClass('fixme');
+        } else {
+            hero.removeClass('fixme');
+        };
+    });
+}
+heroShinker();
+</script>
+</body>
+</html>

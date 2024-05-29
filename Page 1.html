@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resource Management</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+ body, html {
+	 margin: 0;
+	 padding: 0;
+	 font-family: 'Montserrat', sans-serif;
+   background-color: #191919;
+}
+h1,p{
+  color: #ffffff;
+}
+
+ .hero-nav {
+	 position: fixed;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 height: 300px;
+	 min-height: 105px;
+	 background-image: url(https://images.pexels.com/photos/5011647/pexels-photo-5011647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+	 background-size: cover;
+	 background-position: center;
+	 overflow: hidden;
+}
+ .hero-nav .hero-nav__inner {
+	 z-index: 1;
+}
+ .hero-nav h1 {
+	 color: #ffffff;
+	 font-size: 5vw;
+}
+ .hero-nav:before {
+	 content: "";
+	 background: rgba(0, 0, 0, 0);
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 transition: background 400ms;
+}
+ .hero-nav.fixme:before {
+	 background: rgba(0, 0, 0, 0.8);
+}
+ .page-content {
+	 width: 800px;
+	 margin: 0 auto;
+	 line-height: 1.625;
+}
+  </style>
+</head>
+<body>
+  <div class="hero-nav">
+    <div class="hero-nav__inner">
+        <h1>Resource Management</h1>
+        <div class="hero-nav__button">
+            <a href="#" class="btn"></a>
+        </div>
+    </div>
+</div>
+<div class="page-content">
+  <h1>Managing Resources</h1>
+    <p>A process refers to a program running on a computer, and the operating system (OS) oversees how these software processes utilize the system's resources. When software programs need to store data on a storage device like a hard disk, the OS ensures that multiple processes can save data simultaneously without conflicts. For instance, if three processes are running concurrently and regularly saving data, the OS handles their requests to prevent issues when the storage device is already occupied, enabling all three processes to successfully save their data.</p>
+  <h1>Managing Processing Time</h1>
+    <p>When multiple processes are running on a system, the operating system (OS) needs to allocate processing time among them. This is achieved through a scheduler, which executes a scheduling algorithm to determine how the processing time will be divided. The algorithm considers factors such as the importance of running processes and how interrupts are handled.
+      When the OS switches between processes, the currently running process is paused, its state is saved, and it is placed in a queue. The scheduler then selects the next process to run based on its scheduling algorithm. In systems with multiple processors, the scheduler not only distributes processes among the cores but also ensures fair sharing of processing time between them.</p>
+  <h1>Memory Management</h1>
+    <p>The instructions and data needed for a process have to be available in main memory. To ensure this, the OS runs a memory manager program, which:</br></br>
+      • Keeps track of what portions of memory have been allocated – memory is mapped as addresses, and the memory manager program tracks which addresses are allocated to each process</br>
+      • Determines how much memory to allocate to each process</br>
+      • Determines when a portion of memory should be available for a process</p>
+      <img src="https://cdn.discordapp.com/attachments/1085551697138552895/1110177048128917514/image.png" height="300" width="500">
+  <h1>Managing Input/Output Devices</h1>
+    <p>The operating system (OS) plays a crucial role in managing and utilizing input and output (I/O) devices.
+
+      The OS handles I/O devices through the following methods:</br></br>
+      • Recording device requirements: The OS keeps track of which device requires processor time. This allows the processor to communicate with the device without encountering conflicts.</br></br>
+      • Prioritizing processes: The OS assigns priorities to processes based on the control signals sent and received by the I/O device. This ensures that processes requiring I/O operations are given appropriate attention.</br></br>
+      • Handling critical requests: If an I/O device sends a more critical request while the system is executing a task, the OS has the capability to interrupt the current task and switch to the more important request. This allows the OS to prioritize critical I/O operations over less urgent ones.</p>
+  <h1>Managing Secondary Storage</h1>
+  <p>When files and folders reside on a secondary storage device connected to the operating system, the OS performs the following functions:</br></br>
+
+    • Providing access to data and programs: The OS enables access to the data and programs stored on the secondary storage device and facilitates their loading into the main memory for execution.</br></br>
+    • Tracking storage locations: The OS keeps a record of where programs and files are stored on the secondary storage device. This information allows the OS to efficiently retrieve and manage the stored data.</br></br>
+    • Performing backup operations: The OS is responsible for executing backup operations to ensure data on the secondary storage device is safely preserved. This helps protect against data loss in case of hardware failures or other unforeseen events.</br></br>
+    • Supporting a user-friendly interface: The OS provides a file management system that offers a user-friendly interface. This interface allows users to create, edit, and delete files and folders located on the secondary storage device. It simplifies file organization and facilitates user interactions with stored data.</p></br></br>
+      </div>
+<script>
+  var heroShinker = function() {
+    var hero = $('.hero-nav'),
+        heroHeight = $('.hero-nav').outerHeight(true);
+        $(hero).parent().css('padding-top', heroHeight);
+    $(window).scroll(function() {
+        var scrollOffset = $(window).scrollTop();
+        if (scrollOffset < heroHeight) {
+            $(hero).css('height', (heroHeight - scrollOffset));
+        }
+        if (scrollOffset > (heroHeight - 215)) {
+            hero.addClass('fixme');
+        } else {
+            hero.removeClass('fixme');
+        };
+    });
+}
+heroShinker();
+</script>
+</body>
+</html>

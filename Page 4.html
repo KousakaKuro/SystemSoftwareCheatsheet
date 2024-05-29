@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Management</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+ body, html {
+	 margin: 0;
+	 padding: 0;
+	 font-family: 'Montserrat', sans-serif;
+   background-color: #191919;
+}
+h1,p, li, ul{
+  color: #ffffff;
+}
+
+ .hero-nav {
+	 position: fixed;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 height: 300px;
+	 min-height: 105px;
+	 background-image: url(https://images.unsplash.com/photo-1673462263398-0323f364d5e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80);
+	 background-size: cover;
+	 background-position: center;
+	 overflow: hidden;
+}
+ .hero-nav .hero-nav__inner {
+	 z-index: 1;
+}
+ .hero-nav h1 {
+	 color: #ffffff;
+	 font-size: 5vw;
+}
+ .hero-nav:before {
+	 content: "";
+	 background: rgba(0, 0, 0, 0);
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 transition: background 400ms;
+}
+ .hero-nav.fixme:before {
+	 background: rgba(0, 0, 0, 0.8);
+}
+ .page-content {
+	 width: 800px;
+	 margin: 0 auto;
+	 line-height: 1.625;
+}
+  </style>
+</head>
+<body>
+  <div class="hero-nav">
+    <div class="hero-nav__inner">
+        <h1>Memory Management</h1>
+        <div class="hero-nav__button">
+            <a href="#" class="btn"></a>
+        </div>
+    </div>
+</div>
+<div class="page-content">
+  <h1>Management Operations</h1>
+    <p>
+      The operating system of a computer performs several important tasks related to memory management. These tasks include:</br>
+    <ul><p>
+      <li><p><b>Tracking the status of memory allocation:</b> The operating system keeps track of the availability of memory in the system. It maintains a record of which memory spaces are currently in use and which ones are free. When a process needs memory to store data or instructions, the operating system allocates a suitable memory space and marks it as occupied. Once the process finishes and no longer needs the memory, the operating system marks the corresponding space as free, allowing it to be reused for other processes.</li></p>
+      <li><p><b>Determining storage requirements:</b> Processes often require more memory than can be accommodated in a single memory location. The operating system assesses the storage requirements of each process based on its programming and allocates the appropriate amount of memory. It reserves contiguous blocks of memory addresses for each process to use, ensuring that the process has sufficient space to store its data and instructions.</li></p>
+      <li><p><b>Controlling memory usage:</b> Memory is a limited resource, and the operating system must manage its usage efficiently. As more processes are executed and demand memory, the availability of free memory decreases. To optimize memory utilization, the operating system may need to free up memory that is no longer actively used by processes. This is achieved through techniques such as swapping, where parts of a process's memory are temporarily stored on secondary storage devices, allowing other processes to utilize the freed memory. The operating system controls the swapping process and ensures that memory is allocated to processes as required.</p></li>
+    </ul></p>
+      <h1>Managing Secondary Storage</h1>
+    <p>Main memory, also known as random-access memory (RAM), plays a critical role in computer systems by providing a fast and accessible storage space for executing programs and storing data. The operating system (OS) is responsible for managing this resource efficiently. Here are the key points:</br></br>
+
+      Logical and Physical Addresses: When a program runs, it generates logical addresses. The OS maps these logical addresses to physical addresses in the main memory, allowing the program to access the required data and instructions.</br></br>
+      Memory Management Techniques:</br></br>
+    <ul>
+      <li>Paging: The logical address space is divided into fixed-size units called pages. Similarly, the main memory is divided into page frames. The OS uses a page table to track the mapping between logical pages and physical page frames. This enables memory allocation in a non-contiguous manner, allowing pages of a process to be stored anywhere in the main memory.</br></br>
+      <li>Segmentation: Memory is divided into segments of varying sizes to accommodate different memory requirements of processes. Segments do not have to be stored contiguously, and they can be moved in and out of memory as needed. The OS uses a segment table to manage the allocation of memory for each process.</li></br>
+      <li>Virtual Memory: To extend the limited physical memory, the OS utilizes virtual memory techniques. It allows parts of a process that are not currently in use to be temporarily stored in secondary storage, such as a hard disk. This frees up space in the main memory for other processes. When the data or instructions are required again, they are swapped back into the main memory. Virtual memory provides the illusion of a larger memory space, but accessing data from secondary storage is slower compared to accessing data from main memory, which can impact system performance.</li>
+    </ul>
+      <p>Efficient memory management is crucial for optimal performance and resource utilization in computer systems. The OS employs techniques like paging, segmentation, and virtual memory to effectively allocate, track, and utilize memory resources for executing processes and storing data.
+    </p>
+  </div>
+<script>
+  var heroShinker = function() {
+    var hero = $('.hero-nav'),
+        heroHeight = $('.hero-nav').outerHeight(true);
+        $(hero).parent().css('padding-top', heroHeight);
+    $(window).scroll(function() {
+        var scrollOffset = $(window).scrollTop();
+        if (scrollOffset < heroHeight) {
+            $(hero).css('height', (heroHeight - scrollOffset));
+        }
+        if (scrollOffset > (heroHeight - 215)) {
+            hero.addClass('fixme');
+        } else {
+            hero.removeClass('fixme');
+        };
+    });
+}
+heroShinker();
+</script>
+</body>
+</html>

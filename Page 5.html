@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Program Execution with Interpreters</title>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+ body, html {
+	 margin: 0;
+	 padding: 0;
+	 font-family: 'Montserrat', sans-serif;
+   background-color: #191919;
+}
+h1,p{
+  color: #ffffff;
+}
+
+ .hero-nav {
+	 position: fixed;
+	 top: 0;
+	 right: 0;
+	 bottom: 0;
+	 left: 0;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 height: 300px;
+	 min-height: 105px;
+	 background-image: url(https://images.unsplash.com/photo-1668450433152-e56d7e8fe4ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80);
+	 background-size: cover;
+	 background-position: center;
+	 overflow: hidden;
+}
+ .hero-nav .hero-nav__inner {
+	 z-index: 1;
+}
+ .hero-nav h1 {
+	 color: #ffffff;
+	 font-size: 5vw;
+}
+ .hero-nav:before {
+	 content: "";
+	 background: rgba(0, 0, 0, 0);
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 transition: background 400ms;
+}
+ .hero-nav.fixme:before {
+	 background: rgba(0, 0, 0, 0.8);
+}
+ .page-content {
+	 width: 800px;
+	 margin: 0 auto;
+	 line-height: 1.625;
+}
+  </style>
+</head>
+<body>
+  <div class="hero-nav">
+    <div class="hero-nav__inner">
+        <h1>Program Execution with Interpreters</h1>
+        <div class="hero-nav__button">
+            <a href="#" class="btn"></a>
+        </div>
+    </div>
+</div>
+<div class="page-content">
+  <h1>High- and Low-level Languages</h1>
+    <p>High-level languages such as Visual Basic, C++, and Python are designed to be independent of the computer architecture they will run on. The translation of high-level source code to executable machine code can be done through compilation or interpretation.</br>
+<ul>
+  <li>Compilation involves translating the entire source code into machine code before execution. A compiler analyzes the source code, checks for errors, and generates an executable file. This file can be directly executed by the target computer's processor.</li>
+  <li>Interpretation, on the other hand, involves reading and executing the source code line by line during runtime. An interpreter interprets each instruction and performs the necessary operations without a separate compilation step.</li>
+</ul>
+      The choice between compilation and interpretation depends on the implementation of the programming language. Some languages have compilers, some have interpreters, and some offer both options.</br></br>
+      Low-level languages like assembly language also require translation. Assembly language programs are translated using assemblers, which convert human-readable assembly instructions into machine code that the processor can execute.</p>
+  <h1>Compilers</h1>
+    <p>
+      Compilers are responsible for translating code into an executable form, but they do not execute the code themselves. The output of a compiler is typically an executable file that cannot be easily read or reverse-engineered by humans, providing source code protection. Commercial software applications are often distributed as compiled code to safeguard intellectual property and enable revenue generation for developers.
+      The compilation process involves several stages:</br></br>
+    <ul>
+      <li>Lexical analysis: The compiler analyzes the source code to identify individual tokens, such as keywords, variables, and operators.</li>
+      <li>Syntax analysis: The compiler checks the arrangement of tokens based on the language's grammar rules, ensuring that the code follows the correct syntax.</li>
+      <li>Semantic analysis: The compiler verifies the meaning and validity of the code, checking for type compatibility, variable declarations, and other semantic rules.</li>
+      <li>Code generation: The compiler generates the target machine code or intermediate code based on the analyzed source code. This output is in a format that the computer's processor can understand and execute.</li>
+      <li>Optimization: The compiler may apply various optimization techniques to improve the efficiency and performance of the generated code. This includes eliminating redundant code, reordering instructions, and optimizing memory usage.</li>
+    </ul>
+      Compilation errors, such as syntax errors or type mismatch, are reported at the end of the compilation process. Developers need to rectify these errors and recompile the program until it is error-free.</br></br>
+      Once a program has been successfully compiled, the resulting executable file can be directly executed on the target platform without the need for further translation. This eliminates the overhead of an interpreter and can result in faster execution, which is advantageous for performance-critical applications like games.</br></br>
+      It's worth noting that code compiled for one processor architecture may not be compatible with another. For example, a Visual Basic program compiled for an Intel processor may need to be recompiled to run on an Apple processor, as different processor architectures have different instruction sets.</p>
+  <h1>Interpreters</h1>
+  <p>
+    Interpreters are software tools that translate and execute source code line by line. Here's an overview of how interpreters work and their advantages and disadvantages:
+    <ul>
+      <li>Syntax Checking: Each line of source code is first syntax-checked for any errors. If a syntax error is found, such as a missing bracket, the program halts, and the error is reported.</li></br>
+      <li>Line-by-Line Execution: After the syntax check, each line of source code is converted into its machine code equivalent by the interpreter and executed. If a runtime error occurs during execution, the program crashes.</li></br>
+      <li>Rapid Error Identification: Interpreters allow developers to quickly identify and fix errors as they occur, without having to translate the entire program each time. This makes them valuable during the development stage.</li></br>
+      <li>Slower Execution: Interpreted code runs slower than compiled code because it needs to be translated each time the program is run. The line-by-line translation process adds overhead to the execution.</li></br>
+      <li>Interpreter Dependency: Users need to have the interpreter installed on their system to run the program. Without the interpreter, the code cannot be executed.</li></br>
+      <li>Platform Flexibility: Interpreted code can be advantageous when the programmer is unsure about the target platform. Interpreted languages, like JavaScript, rely on the browser's interpreter to translate and execute the code, making it platform-independent.</li></br>
+      <li>Bytecode and Virtual Machines: Many interpreted languages now use bytecode as an intermediate stage to speed up the translation process. The source code is compiled into bytecode, a low-level code, which is then interpreted and executed by a virtual machine.</li>
+  </ul>
+    </p>
+      <html>
+      <head>
+        <title>Compiler or Interpreter></title>
+        <style>
+          body {
+            color: white;
+          }
+        </style>
+      </head>
+        <h2>Compiler:</h2>
+        <h3>Benefits:</h3>
+        <ul>
+          <li>Code can be optimized by the compiler.</li>
+          <li>Compiled programs can be distributed as machine code, protecting the source code's secrecy for commercial reasons.</li>
+          <li>No translation is required at execution time since it's already done during compilation.</li>
+        </ul>
+        <h3>Drawbacks:</h3>
+        <ul>
+          <li>Errors are reported only after the entire program is compiled, which can be time-consuming for large programs.</li>
+          <li>Making changes to the program requires recompiling the entire program.</li>
+          <li>The executable code produced is specific to the processor platform, limiting portability.</li>
+        </ul>
+        <h2>Interpreter:</h2>
+        <h3>Benefits:</h3>
+        <ul>
+          <li>Errors are reported as they are encountered, allowing for immediate identification.</li>
+          <li>Debugging is quicker and easier as errors are reported line by line.</li>
+          <li>Interpreted code is often platform-independent, providing flexibility.</li>
+        </ul>
+        <h3>Drawbacks:</h3>
+        <ul>
+          <li>The program requires an interpreter to be present for execution.</li>
+          <li>Translating the code line by line at execution time can be slower compared to compiled machine code.</li>
+          <li>The interpreter itself occupies memory space.</li>
+        </ul>
+      </body>
+      </html>
+    <h1>Assemblers</h1>
+  <p>Assemblers are software tools that translate assembly code programs into executable code. Assembly code is specific to a particular computer architecture, so assemblers are also platform-specific.</br></br>
+
+    The translation process in assemblers is relatively simple compared to compiling high-level source code because there is a direct correspondence between assembly code and machine-executable code. Assemblers remove comments present in the assembly code programs. Symbolic references, such as labels, are replaced with the actual addresses they represent in memory. This allows the resulting executable code to be directly executed by the computer's processor.</p>
+</div>
+<script>
+  var heroShinker = function() {
+    var hero = $('.hero-nav'),
+        heroHeight = $('.hero-nav').outerHeight(true);
+        $(hero).parent().css('padding-top', heroHeight);
+    $(window).scroll(function() {
+        var scrollOffset = $(window).scrollTop();
+        if (scrollOffset < heroHeight) {
+            $(hero).css('height', (heroHeight - scrollOffset));
+        }
+        if (scrollOffset > (heroHeight - 215)) {
+            hero.addClass('fixme');
+        } else {
+            hero.removeClass('fixme');
+        };
+    });
+}
+heroShinker();
+</script>
+</body>
+</html>

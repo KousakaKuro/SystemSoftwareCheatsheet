@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SYSTEM SOFTWARE CHEATSHEET</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+  <style>
+    body, html {height: 100%; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif}
+    h1,h2,h3,h4,h5,h6 {font-family: 'Roboto Slab', serif;}
+    .menu {display: none}
+    .bgimg {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url("https://images.pexels.com/photos/3219951/pexels-photo-3219951.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+      min-height: 90%;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #fdfdfd;
+      --highlight1: #d8183e;
+      --highlight2: #000000;
+      --color: #08090a;
+      --font-number: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+      --font-head: "Space Mono", Consolas, Menlo, Monaco, "Courier New", monospace;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    .list {
+      list-style: none;
+      width: 900px;
+      max-width: 100%;
+    }
+
+    .item {
+      display: block;
+      clear: both;
+      counter-increment: list;
+      padding-bottom: 4rem;
+      font-size: 20px;
+      line-height: 1.375;
+      position: relative;
+    }
+
+    .item:before {
+      font: bold 50px/1 var(--font-number);
+      content: counter(list);
+      width: 5rem;
+      height: 5rem;
+      float: left;
+      margin: 0 1.5rem 0.75rem 0;
+      color: var(--bg);
+      background: var(--highlight1) linear-gradient(to bottom right, var(--highlight1) 25%, var(--highlight2));
+      text-shadow: 0 0 2px var(--highlight1);
+    }
+
+    /* Hamburger Menu Styles */
+    .menu-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    .menu-toggle__line {
+      width: 100%;
+      height: 4px;
+      background-color: var(--highlight1);
+      transition: background-color 0.3s;
+    }
+
+    .menu-toggle__line.menu-toggle__line--middle {
+      width: 75%;
+    }
+
+    .menu-toggle.open .menu-toggle__line {
+      background-color: var(--highlight2);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9998;
+      display: none;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100%;
+      background-color: var(--bg);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      transform: translateX(100%);
+      transition: transform 0.3s;
+    }
+
+    .menu.open {
+      transform: translateX(0);
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu li {
+      margin-bottom: 1rem;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--color);
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .menu a:hover {
+      color: var(--highlight1);
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        width: 100%;
+      }
+
+      .menu-toggle {
+        top: 1rem;
+        right: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hamburger Menu HTML -->
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="menu-toggle__line"></div>
+    <div class="menu-toggle__line menu-toggle__line--middle"></div>
+    <div class="menu-toggle__line"></div>
+  </div>
+
+  <div class="menu-overlay" onclick="toggleMenu()"></div>
+
+  <div class="menu">
+    <ul>
+      <li><a href="#home" onclick="showHomePage()">Home</a></li>
+      <li><a href="#syllabus">Syllabus</a></li>
+      <li><a href="/Page 1.html" onclick="showPage2()">Maximizing OS Resource Utilization</a></li>
+      <li><a href="/Page 2.html" onclick="showPage3()">Multi-tasking and Processes</a></li>
+      <li><a href="/Page 3.html" onclick="showPage4()">Scheduling</a></li>
+      <li><a href="/Page 4.html" onclick="showPage5()">Memory Management</a></li>
+      <li><a href="/Page 5.html" onclick="showPage6()">Program Execution with Interpreters</a></li>
+    </ul>
+  </div>
+
+  <!-- Header with image -->
+  <header class="bgimg w3-display-container w3-grayscale-min" id="home">
+    <div class="w3-display-middle w3-center">
+      <span class="w3-text-white w3-hide-small" style="font-size:70px; text-shadow: 8px 8px 15px rgba(0, 0, 0, 10000)"><b>SYSTEM SOFTWARE CHEATSHEET</b></span>
+    </div>
+  </header>
+
+  <!-- Menu Container -->
+  <div class="w3-container w3-black w3-padding-64 w3-xxlarge" id="syllabus">
+    <div class="w3-content">
+      <h1 style="margin-bottom:20px" style="font-size:10px">Purposes of an Operating System (OS)</h1>
+      <ul class="w3-ul w3-large">
+        <li>
+          <h2 class="w3-text-white"><a href="/Page 1.html" onclick="showPage2()">Maximizing OS Resource Utilization</a></h2>
+          <p>Exploring methods to optimize resource usage in an operating system.</p>
+        </li>
+        <li>
+          <h2 class="w3-text-white"><a href="/Page 2.html" onclick="showPage3()">Multi-tasking and Processes</a></h2>
+          <p>Understanding the idea of multi-tasking and the role of processes in executing multiple tasks simultaneously.</p>
+        </li>
+        <li>
+          <h2 class="w3-text-white"><a href="/Page 3.html" onclick="showPage4()">Scheduling: Functions and Benefits</a></h2>
+          <p>Examining the importance of scheduling in managing tasks and the advantages of different scheduling routines.</p>
+        </li>
+        <li>
+          <h2 class="w3-text-white"><a href="/Page 4.html" onclick="showPage5()">Memory Management: Virtual Memory, Paging, and Segmentation</a></h2>
+          <p>Overviewing virtual memory, paging, and segmentation techniques for efficient memory management.</p>
+        </li>
+        <li>
+          <h2 class="w3-text-white"><a href="/Page 5.html" onclick="showPage6()">Program Execution with Interpreters</a></h2>
+          <p>Explaining how interpreters execute programs without generating a translated version.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<!-- Page 2 Container -->
+<div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="page2" style="display: none;">
+  <div class="w3-content">
+    <h1>Maximizing OS Resource Utilization</h1>
+    <p>
+      A process refers to a program running on a computer, and the operating system (OS) oversees how these software processes utilize the system's resources.
+    </p>
+    <p>
+      When software programs need to store data on a storage device like a hard disk, the OS ensures that multiple processes can save data simultaneously without conflicts. For instance, if three processes are running concurrently and regularly saving data, the OS handles their requests to prevent issues when the storage device is already occupied, enabling all three processes to successfully save their data.
+    </p>
+    <a href="#syllabus">Back to Syllabus</a>
+  </div>
+</div>
+
+    <!-- Page 3 Container -->
+  <div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="page3" style="display: none;">
+    <div class="w3-content">
+      <h1>Multi-tasking and Processes</h1>
+      <p>
+        When multiple processes are running on a system, the operating system (OS) needs to allocate processing time among them. This is achieved through a scheduler, which executes a scheduling algorithm to determine how the processing time will be divided. The algorithm considers factors such as the importance of running processes and how interrupts are handled.</p><p>
+
+        When the OS switches between processes, the currently running process is paused, its state is saved, and it is placed in a queue. The scheduler then selects the next process to run based on its scheduling algorithm. In systems with multiple processors, the scheduler not only distributes processes among the cores but also ensures fair sharing of processing time between them.
+      </p>
+      <a href="#syllabus">Back to Syllabus</a>
+    </div>
+  </div>
+
+      <!-- Page 4 Container -->
+  <div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="page4" style="display: none;">
+    <div class="w3-content">
+      <h1>Scheduling: Functions and Benefits</h1>
+      <p>
+The instructions and data needed for a process have to be available in main memory. To ensure this, the OS runs a memory manager program, which:</br></br>
+  1. Keeps track of what portions of memory have been allocated – memory is mapped as
+     addresses, and the memory manager program tracks which addresses are allocated to each process</br>
+  2. Determines how much memory to allocate to each process</br>
+  3. Determines when a portion of memory should be available for a process</br>
+        </p>
+        <img src="https://isaaccomputerscience.org/api/v3.5.0/api/images/content/computer_science/computer_systems/operating_systems/figures/isaac_cs_sys_os_memory_use_dgm.png" alt="Graph" width="600" height="400"></br>
+        <a href="#syllabus">Back to Syllabus</a>
+    </div>
+  </div>
+
+    <!-- Page 5 Container -->
+  <div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="page5" style="display: none;">
+    <div class="w3-content">
+      <h1>Memory Management: Virtual Memory, Paging, and Segmentation</h1>
+      <p>THIS IS PAGE 5</p>
+      <a href="#syllabus">Back to Syllabus</a>
+    </div>
+  </div>
+
+    <!-- Page 6 Container -->
+  <div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="page6" style="display: none;">
+    <div class="w3-content">
+      <h1>Program Execution with Interpreters</h1>
+      <p>THIS IS PAGE 6</p>
+      <a href="#syllabus">Back to Syllabus</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+    <a style="font-size:20px" href="https://isaaccomputerscience.org/topics/a_level?examBoard=all&stage=all#cie">Clickable Source</a>
+    <p style="font-size:20px">All Right Reserved © 2023</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      var menuToggle = document.querySelector('.menu-toggle');
+      var menuOverlay = document.querySelector('.menu-overlay');
+      var menu = document.querySelector('.menu');
+      menuToggle.classList.toggle('open');
+      menuOverlay.style.display = menuToggle.classList.contains('open') ? 'block' : 'none';
+      menu.classList.toggle('open');
+    }
+</script>
+</body>
+</html>
